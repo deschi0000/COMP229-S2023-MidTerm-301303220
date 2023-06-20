@@ -24,21 +24,39 @@ router.get('/', (req, res, next) => {
 });
 
 //  GET the Book Details page in order to add a new Book
-router.get('/add', (req, res, next) => {
+router.get('/add', async (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
+    try {
+      res.render('books/details', {title: "Book Details", books:""});
+    } catch (err) {
+      console.log(err);
+    }
 
 });
 
 // POST process the Book Details page and create a new Book - CREATE
-router.post('/add', (req, res, next) => {
+router.post('/add', async (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
+    let newBook = new book({
+      Title: req.body.title,
+      Price: req.body.price,
+      Author: req.body.genre,
+      Genre: req.body.author
+    })
 
+    try {
+      await newBook.save();
+      res.redirect('/books');
+    } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
 });
 
 // GET the Book Details page in order to edit an existing Book
@@ -47,6 +65,8 @@ router.get('/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+
+
 });
 
 // POST - process the information passed from the details form and update the document
