@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/deschi0000/COMP229-S2023-MidTerm-301303220.git"
   },
   "keywords": [
     "NodeJS",
@@ -55,7 +55,7 @@
   "author": "Your Name Goes Here",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/deschi0000/COMP229-S2023-MidTerm-301303220/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/deschi0000/COMP229-S2023-MidTerm-301303220#readme"
 }
