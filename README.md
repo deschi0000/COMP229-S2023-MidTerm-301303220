@@ -1,5 +1,8 @@
-# COMP229-F2019-MidTerm Test
+## COMP229-S2023-MidTerm Test
 
-## Welcome to the MidTerm Project - the Favourite Book List App
+### MidTerm Project - the Favourite Book List App
+ - Comp229-401 Summer
+ - Dave von Deschwanden
+ - 301303220
 
 please use **`npm install`** to install project dependencies
