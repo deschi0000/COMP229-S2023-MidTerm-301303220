@@ -1,7 +1,6 @@
 ## COMP229-S2023-MidTerm Test
 
 ### MidTerm Project - the Favourite Book List App
- - Comp229-401 Summer
  - Dave von Deschwanden
  - 301303220
 
