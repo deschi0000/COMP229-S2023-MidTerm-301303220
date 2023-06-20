@@ -1,4 +1,4 @@
-// Midterm Test - Dave von Deschwanden - 301303220 - June 20.2023
+// Midterm Test "Favouite Book List Webapp" - Dave von Deschwanden - 301303220 - June 20.2023 - books.js
 
 // modules required for routing
 let express = require('express');
@@ -112,11 +112,21 @@ router.post('/:id', async (req, res, next) => {
 });
 
 // GET - process the delete by user id
-router.get('/delete/:id', (req, res, next) => {
+router.get('/delete/:id', async (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
+    let id = req.params.id;
+
+    try {
+      await book.findByIdAndRemove(id);
+      res.redirect('/books');
+    } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+    
 });
 
 
