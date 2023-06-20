@@ -1,3 +1,5 @@
+// Midterm Test - Dave von Deschwanden - 301303220 - June 20.2023
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -30,7 +32,10 @@ router.get('/add', async (req, res, next) => {
      * ADD CODE HERE *
      *****************/
     try {
-      res.render('books/details', {title: "Book Details", books:""});
+      res.render('books/details', {
+        title: "Book Details", 
+        books:""
+      });
     } catch (err) {
       console.log(err);
     }
@@ -46,9 +51,9 @@ router.post('/add', async (req, res, next) => {
     let newBook = new book({
       Title: req.body.title,
       Price: req.body.price,
-      Author: req.body.genre,
-      Genre: req.body.author
-    })
+      Author: req.body.author,
+      Genre: req.body.genre
+    });
 
     try {
       await newBook.save();
@@ -60,21 +65,49 @@ router.post('/add', async (req, res, next) => {
 });
 
 // GET the Book Details page in order to edit an existing Book
-router.get('/:id', (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
+    let id = req.params.id;
+    try {
+      let bookToEdit = await book.findById(id);
+      res.render('books/details', {
+        title: "Edit Book",
+        books: bookToEdit
+      });
 
+    } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
 
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/:id', (req, res, next) => {
+router.post('/:id', async (req, res, next) => {
 
     /*****************
      * ADD CODE HERE *
      *****************/
+    let id = req.params.id;
+    
+    let updatedBook = {
+      "Title": req.body.title,
+      "Price": req.body.price,
+      "Author": req.body.author,
+      "Genre": req.body.genre
+    }
+
+    try {
+      await book.updateOne({_id:id}, updatedBook);
+      res.redirect('/books');
+
+    } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
 
 });
 
